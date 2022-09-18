@@ -1,0 +1,259 @@
+<!-- File Nav + Footer -->
+<!DOCTYPE html><!--comment-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="img/ico/cake2.ico">
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Galada&family=Josefin+Sans:wght@100;200;300;400;500;600;700&family=Noto+Sans+Thai:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <script src="https://kit.fontawesome.com/10e5ca581a.js" crossorigin="anonymous"></script>
+  <script type="module" src="script/firebase.js"></script>
+  
+  <title>Unibake</title>
+  <style>
+  :root{
+    --div-pink-box-width: 24vw;
+    --div-cart-container-width: 60vw;
+    --div-cart-container-shadow-width: 3.5vw; 
+    --div-grid-container-width: calc( var(--div-pink-box-width) + var(--div-cart-container-width) + var(--div-cart-container-shadow-width) );
+
+    --lenght-offset: calc( (var(--div-pink-box-width) / 2) - var(--div-cart-container-shadow-width) );
+  }
+    
+  .grid-container {
+    position: relative;
+    display: grid;
+    grid-template-areas:
+      "pink-box cart-container"
+      "pink-box btn-order"
+    ;
+    grid-template-columns: auto;
+    grid-template-rows: auto 200px;
+    justify-content: flex-start;
+    width: calc(var(--div-grid-container-width) - var(--lenght-offset) - var(--div-cart-container-shadow-width));
+    margin: 0 auto;
+  } 
+  .pink-box {
+    position: relative;
+    justify-self: flex-end;
+    grid-area: pink-box;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin: 0 0;
+    width: var(--div-pink-box-width);
+    height: auto;
+  }
+  .cart-container {
+    position: relative;
+    grid-area: cart-container;
+    align-self: flex-start;
+    justify-self: flex-start;
+    border: var(--div-color-head) solid 2px;
+    background-color: var(--div-color-main);
+    left: calc( (-1 * var(--div-cart-container-shadow-width)) - var(--lenght-offset));
+    margin-top: 40px;
+    width: var(--div-cart-container-width);
+    height: 550px;
+    padding: 45px;
+  }
+  .cart-container.shadow:before{
+    content: '';
+    position: absolute;
+    background: var(--div-color-head);
+    transform: translate(100%,50%);
+    bottom: 50%;
+    right: 0;
+    
+    width: var(--div-cart-container-shadow-width);
+    height: 87.5%;
+  }
+  .btn-order {
+    position: relative;
+    grid-area: btn-order;
+    font-family: 'Galada', cursive;
+    background-color: var(--div-color-head);
+    color: var(--div-color-main);
+    cursor: pointer;
+    align-self: flex-end;
+    justify-self: flex-end;
+    left: calc( (-1 * var(--lenght-offset)));
+    top: calc( -65px / 2 - 20px);
+    
+    letter-spacing: 0.6em;
+    font-size: 25px;
+    height: 65px;
+    width: 20vw;
+  } 
+  .btn-order:hover {
+    transition: 0.8s;
+    transform: scale(1.05);
+    background-color: var(--div-color-head-fade);
+    color: var(--div-color-main);
+  }
+    
+  </style>
+  <style>  
+  .cart-container .line{
+    background-color: var(--div-color-head);
+  }
+  .cart-container .line.vertical {
+    position: absolute;
+    left: calc( 70% );
+    width: 1px;
+    height: 21vh; 
+  }
+  .cart-container .line.horizon {
+    display: inline-block;
+    height: 1px;
+    width: calc(var(--div-cart-container-width) - 90px);
+  }
+
+  .cart-container p {
+    margin: 10px;
+    letter-spacing: 4px;
+    color: #1E212B;
+  }
+ 
+  .order-table th{
+    font-size: 22px;
+    height: 50px;
+  }
+  th.menu {
+    colspan: 2;
+  }
+  .favor-item {
+    font-size: 22px;
+    height: 50px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  td input {
+    width: 40px;
+    height: 30px;
+    padding: 2px;
+  }
+  td:nth-child(2){
+    text-align: center;
+  }
+  td:last-child{
+    text-align: right;
+  }
+  </style>
+  
+  <script defer src="script/function.js"></script>
+</head>
+  
+<body>
+  <div id="container">
+    <nav>   
+      <div class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+      <div class="logo">
+            <a onclick="goHomePage()"><h1>UNIBAKE</h1></a>
+        </div>
+
+      <div class="search">
+        <div class="search-box">
+            <input class="search-txt" type="text" name="" placeholder="Type to search">
+            <a class = "search-btn"   href="#"><i class="fas fa-search"></i></a>
+        </div>
+      </div>
+      
+      <ul class="nav-option">
+          <li class="profile-text">
+          <a onclick="goProfilePage()" class="nav-link">MY&nbsp;ACCOUNT</a></li>
+        <li class="cart-text">
+          <a onclick="goCartPage()" class="nav-link" >MY&nbsp;ORDER</a></li>
+        <li class="space-text">
+          </li>
+          <li><a onclick="goMenuPage()" class="nav-link" >MENU</a></li>
+          <li><a onclick="goUniHousePage()" class="nav-link" >UNIHOUSE</a></li>
+          <li><a onclick="goAboutPage()" class="nav-link" >ABOUT</a></li>
+        </ul>
+      
+      <div class="cart-icon"">
+            <a onclick="goCartPage()"   ><i class="fas fa-shopping-cart"></i></a>
+        </div>
+      <div class="profile-icon">
+            <a onclick="goProfilePage()"  ><i class="fas fa-user"></i></a>
+        </div>
+      <button onclick="gojoinUsPage()" class="joinUs">Join&nbsp;us
+      </button>
+    </nav>
+    <div id="main">
+      <div class="grid-container">
+        <div class="pink-box">
+          <h1>ORDE<br>R</h1>
+        </div>
+        <div class= "cart-container shadow">
+          <div class = "line vertical1"></div><!-- Ending Line --> 
+          <table class="order-table" border=2px>
+            <tr>
+              <th class="menu">Menu</th>
+              <th class="price">Price</th>
+            </tr> 
+            <tr>
+              <td colspan=2>Brownie</td>
+            </tr>
+              <tr>
+                <td><p style = "text-indent: 50px;">Almond</p></td>
+                <td><input type="number" value="1">&nbsp;pc(s)</td>
+                <td><p>60&nbsp;thb</p></td>
+              </tr>
+          </table>
+          <div class = "line horizon"></div><!-- Ending Line -->
+          <table class="shipping-table">
+              <tr>
+                  <p style = "font-size: 20px; line-height: 40px;">
+                    Shipping&nbsp;
+                    <a href="" style="color: #1E212B; font-size: 12px;">Change</a>
+                  </p>
+                <td>
+                  <p style = "font-size: 20px; text-indent: 50px; line-height: 0px;">Standard&nbsp;Shipping</p>
+                </td>
+                <td>
+                  <p style = "font-size: 22px; text-indent: 50px; line-height: 0px;">29&nbsp;thb</p>
+                </td>
+              </tr>
+            <tr>
+                <td>
+                  <p style = "font-size: 20px; line-height: 40px;">Discounts</p>
+                </td>
+                <td>
+                  <p style = "font-size: 22px; text-indent: 50px;">-10&nbsp;thb</p>
+                </td>
+              </tr>
+          </table>        
+          <div class = "line horizon"></div><!-- Ending Line -->
+          <table class="total-table">
+            <tr>
+              <td>
+                  <p style = "font-size: 30px; line-height: 50px;">
+                    TOTAL</p>
+              </td>
+              <td><p style = "font-size: 30px;">79 thb</p></td>
+            </tr>
+          </table>
+        </div>
+        <button class = "btn-order">Order</button>
+      </div>
+    </div>
+  </div><!--   For Main Content -->
+  
+</body>
+  
+<footer>
+   <div>
+          <p>&copy;2022-Unibake. All rights reserved</p>
+   </div>
+</footer>
+</html>

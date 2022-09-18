@@ -1,0 +1,282 @@
+<!-- File Nav + Footer -->
+<!DOCTYPE html><!--comment-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="img/ico/cake2.ico">
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Galada&family=Josefin+Sans:wght@100;200;300;400;500;600;700&family=Noto+Sans+Thai:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <script src="https://kit.fontawesome.com/10e5ca581a.js" crossorigin="anonymous"></script>
+  <script type="module" src="script/firebase.js"></script>
+  
+  <title>Unibake</title>
+  <style>
+  .pink-box {
+    background-color: var(--div-color-head);
+    color: var(--div-color-font);
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin: 0 0;
+    left: 24vw;
+    width: 22vw;
+    height: 750px;
+  }
+
+  .inform-container {
+    position: absolute;
+    left: 9vw;
+    top: 55px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: repeat(4,1fr);
+    grid-template-areas:
+      "picture text1"
+      "picture text2"
+      "picture text3"
+      "picture etc"
+    ;
+    grid-gap: 20px calc(10px + 3vw);
+    width: 70vw;
+    height: auto; 
+  }
+
+  .profile-picture {
+    grid-area: picture;
+    background: url(img/founder/founder_img1.png);
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-position: center right;
+    height: auto;
+    min-width: calc(360px + 3vw);
+    width: 23vw;
+  }
+    
+  .inform-container .box.username { grid-area: text1;}
+  .inform-container .box.email { grid-area: text2;}
+  .inform-container .box.password { grid-area: text3;}
+  .inform-container .box {
+    border: var(--div-color-head) solid 2px;
+    background-color: var(--div-color-main);
+    width: auto;
+    height: 80px;
+    padding: 12px;
+    padding-left: calc(12px + 2vw)
+  }
+  .inform-container .box .topic {
+    color: var(--div-color-head);
+    letter-spacing: 0.6em;
+    margin-top: 5px;
+  }
+  .inform-container .box .data {
+    color: var(--div-color-font);
+    font-size: 18px;
+    letter-spacing: 0.6em;
+    line-height: 30px;
+  }
+
+  .button-container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center:
+    align-items: center;
+    right: 13vw;
+    bottom: 120px;
+    min-width: 200px;
+    width: 15vw;
+    height: 300px;
+    z-index: 11;
+  }
+  .button-container button {
+    font-family: 'Galada', cursive;
+    border: var(--div-color-head) solid 2px; 
+    cursor: pointer;
+    height: 65px;
+    letter-spacing: 0.6em;
+    font-size: 25px;
+    transition: 0.5s;
+  }
+
+  .edit {
+    margin-bottom: 10px;
+    background-color: var(--div-color-head);
+    color: var(--div-color-main);
+  }
+  .back {
+    background-color: var(--div-color-main);
+    color: var(--div-color-head);
+  }
+
+  .btn:hover{
+    transform: scale(1.05);
+  }
+  .edit:hover {
+    background-color: var(--div-color-head-fade); 
+  }
+  .back:hover {
+    background-color: var(--div-color-main-fade);
+  }
+  </style>
+  <style>
+@media(max-width: 1440px) {
+  .inform-container {
+    grid-template-rows: repeat(3,1fr);
+    grid-template-areas:
+      "picture text1"
+      "picture text2"
+      "picture text3"
+    ;
+  }
+  .profile-picture {
+    min-width: 280px;
+    }
+} 
+@media(max-width: 1024px) {
+  .inform-container {
+    grid-template-columns: 0.9fr auto;
+    grid-template-rows: 1.5fr 0.5fr 1fr;
+    grid-template-areas:
+      "picture text1"
+      "picture text3"
+      "text2 text2"
+    ;
+  }
+  .profile-picture {
+    min-width: 200px;
+    }
+  .inform-container .box.username {
+    height: auto;
+    
+  }
+  
+} 
+@media(max-width: 768px) {
+  .pink-box {
+    left: 20vw;
+    width: 34vw;
+  }
+  .inform-container {
+    left: 5vw;
+  }
+  .button-container {
+    right: 4.5vw;
+  }
+}
+@media(max-width: 606px) {
+  .pink-box {
+    width: 40vw;
+    height: calc(1000px + 40vw);
+  }
+  .inform-container {
+    left: 10vw;
+    grid-template-columns: 80vw; 
+    grid-template-rows: 80vw auto;
+    grid-template-areas:
+      "picture"
+      "text1"
+      "text2"
+      "text3"
+    ;
+  }
+  .profile-picture {
+    min-width: 80vw;
+    width: 80vw;
+  }
+  .inform-container .box {
+    height: auto;
+    width: auto;
+    word-break: break-word;
+  }
+}
+  </style>
+  <script defer src="script/function.js"></script>
+</head>
+  
+<body>
+  <div id="container">
+    <nav>   
+      <div class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+      <div class="logo">
+            <a onclick="goHomePage()"><h1>UNIBAKE</h1></a>
+        </div>
+
+      <div class="search">
+        <div class="search-box">
+            <input class="search-txt" type="text" name="" placeholder="Type to search">
+            <a class = "search-btn"   href="#"><i class="fas fa-search"></i></a>
+        </div>
+      </div>
+      
+      <ul class="nav-option">
+          <li class="profile-text">
+          <a onclick="goProfilePage()" class="nav-link">MY&nbsp;ACCOUNT</a></li>
+        <li class="cart-text">
+          <a onclick="goCartPage()" class="nav-link" >MY&nbsp;ORDER</a></li>
+        <li class="space-text">
+          </li>
+          <li><a onclick="goMenuPage()" class="nav-link" >MENU</a></li>
+          <li><a onclick="goUniHousePage()" class="nav-link" >UNIHOUSE</a></li>
+          <li><a onclick="goAboutPage()" class="nav-link" >ABOUT</a></li>
+        </ul>
+      
+      <div class="cart-icon"">
+            <a onclick="goCartPage()"   ><i class="fas fa-shopping-cart"></i></a>
+        </div>
+      <div class="profile-icon">
+            <a onclick="goProfilePage()"  ><i class="fas fa-user"></i></a>
+        </div>
+      <button onclick="gojoinUsPage()" class="joinUs">Join&nbsp;us
+      </button>
+    </nav>
+    <div id="main">
+      <!--   For Main Content -->
+      <div class="pink-box">
+        <h1>PRO<br>FILE</h1>
+      </div>
+      <div class = "inform-container">
+        <div class = "profile-picture"></div>
+        <div class = "box username">
+          <p class = "topic">Username</p>
+          <p class = "data username">
+            Sitthipon Sinthuwongpusa
+          </p>
+        </div>
+        <div class = "box email">
+          <p class = "topic">Email</p>
+          <p class = "data email">
+            f_i_g_h_t_06@hotmail.com
+          </p>
+        </div>
+        <div class = "box password">
+          <p class = "topic">Password</p>
+          <p class = "data">
+            **************
+          </p>
+        </div>
+      </div>
+      <div class = "button-container">
+        <button class = "btn edit">Edit</button>
+        <button class = "btn back">Back</button>
+      </div>
+    </div>
+  </div>
+
+</body>
+  
+<footer>
+  
+ <div class="footerTemplate">
+        <p>&copy;2022-Unibake. All rights reserved</p>
+ </div>
+  
+</footer>
+</html>

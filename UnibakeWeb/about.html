@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="img/ico/cake2.ico">
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Galada&family=Josefin+Sans:wght@100;200;300;400;500;600;700&family=Noto+Sans+Thai:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <script src="https://kit.fontawesome.com/10e5ca581a.js" crossorigin="anonymous"></script>
+  <script type="module" src="script/firebase.js"></script>
+  
+  <title>Unibake</title>
+  <style>
+  .pink-box{
+    width: 24vw;
+  }   
+  .founder-name {
+    position: relative;
+    background-color: #FFFDED;
+    border: #1E212B solid 2px;
+    transform: translate(-3%);
+    margin:0 0 80px 0;
+    min-height: 100px;
+    height: auto;
+    
+    box-shadow: -7vw 22px #1E212B;
+    width: 31vw;
+/*     max-width: 480px; */
+  }
+  .box1{
+    margin-top: 35px;
+  }
+  .box2{
+    box-shadow: 7vw 22px #1E212B;
+    margin-left: -9vw;
+  }
+      
+  .founder-img {
+    position: absolute;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+
+    transform: translate(-50%);
+    left: -7vw;
+    top: 0;
+  }
+  .circle1{
+    background: url(img/founder/founder_img1.png);
+    background-size: cover;
+    background-color: #C4C4C4;
+  }
+  .circle2 {
+    background: url(img/founder/founder_img2.png);
+    background-size: cover;
+    background-color: #C4C4C4;
+    
+    left: 38vw;
+  } 
+  .circle3{
+    background: url(img/founder/founder_img3.png);
+    background-size: cover;
+    background-color: #C4C4C4;
+  }
+
+  .founder-text{
+    font-size: 1.5em;
+    letter-spacing: .6em;
+    padding: 20px 1vw 0 2.2vw;
+  }
+    
+  @media(max-width: 1440px) {
+  .pink-box{
+    width: 33vw;
+  }
+  .founder-name {
+    transform: translate(1%);
+    box-shadow: -12vw 22px #1E212B;
+    width: 45vw;
+  }
+  .box2{
+    box-shadow: 9vw 22px #1E212B;
+    margin-left: -18vw;
+  }
+      
+  .founder-img {
+    left: -12vw;
+    top: 0;
+  }
+  .circle2 {
+    left: 54vw;
+  } 
+  }
+    
+  @media(max-width: 768px) {
+    .pink-box{
+    width: 50vw;
+  }
+  .founder-name {
+    transform: translate(-1%);
+    width: 62vw;
+  }   
+  .circle2 {
+    left: 71vw;
+  } 
+
+  .founder-text{
+    font-size: 1.5em;
+  }
+  }
+    
+  @media(max-width: 606px) {
+    .founder-img {
+    width: 17vw;
+    height: 17vw;
+  }
+    .founder-text{
+    font-size: 1.5em;
+    letter-spacing: .6em;
+    padding: 20px 1vw 0 5vw;
+  }
+  }
+  </style>
+
+  <script defer src="script/function.js"></script>
+</head>
+<body>
+  <div id="container">
+    <nav>   
+      <div class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+      <div class="logo">
+            <a onclick="goHomePage()"><h1>UNIBAKE</h1></a>
+        </div>
+
+      <div class="search">
+        <div class="search-box">
+            <input class="search-txt" type="text" name="" placeholder="Type to search">
+            <a class = "search-btn"   href="#"><i class="fas fa-search"></i></a>
+        </div>
+      </div>
+      
+      <ul class="nav-option">
+          <li class="profile-text">
+          <a onclick="goProfilePage()" class="nav-link">MY&nbsp;ACCOUNT</a></li>
+        <li class="cart-text">
+          <a onclick="goCartPage()" class="nav-link" >MY&nbsp;ORDER</a></li>
+        <li class="space-text">
+          </li>
+          <li><a onclick="goMenuPage()" class="nav-link" >MENU</a></li>
+          <li><a onclick="goUniHousePage()" class="nav-link" >UNIHOUSE</a></li>
+          <li><a onclick="goAboutPage()" class="nav-link" >ABOUT</a></li>
+        </ul>
+      
+      <div class="cart-icon"">
+            <a onclick="goCartPage()"   ><i class="fas fa-shopping-cart"></i></a>
+        </div>
+      <div class="profile-icon">
+            <a onclick="goProfilePage()"  ><i class="fas fa-user"></i></a>
+        </div>
+      <button onclick="gojoinUsPage()" class="joinUs">Join&nbsp;us
+      </button>
+    </nav>
+    <div id="main">
+      <!--   Main Content -->
+      <div class="pink-box">
+          <div class="founder-name box1">
+              <p class="founder-text">Poom</p>
+              <div class="founder-img circle1">
+              </div>
+          </div>
+          <div class="founder-name box2">
+              <p class="founder-text">Nick</p>
+              <div class="founder-img circle2"></div>
+          </div>
+          <div class="founder-name box3">
+              <p class="founder-text">Fight</p>
+              <div class="founder-img circle3"></div>
+          </div>
+          <h1>ABOU<br>T</h1>
+      </div>
+    
+    </div>
+  </div>
+
+</body>
+<footer>
+  <p>&copy;2022-Unibake. All rights reserved</p>
+</footer>
+</html>

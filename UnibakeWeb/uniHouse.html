@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="icon" href="img/ico/cake2.ico">
+	<link href="https://fonts.googleapis.com/css2?family=Galada&family=Josefin+Sans:wght@100;200;300;400;500;600;700&family=Noto+Sans+Thai:wght@100;200;300;400;500;600;700;800;900&display=swap"
+	 rel="stylesheet">
+  
+	<script src="https://kit.fontawesome.com/10e5ca581a.js" crossorigin="anonymous">
+	</script>
+  <script type="module" src="script/firebase.js"></script>
+  
+  <style>
+  .pink-box {
+    position: relative;
+    justify-content: flex-end;
+    align-items: flex-end;
+    
+/*     font-size: 22px; */
+    margin-bottom: 0;
+  }
+  .pink-box1 {
+    min-height: 50px;
+    height: 1vh;
+  }
+  .pink-box2 {
+    height: auto;
+    padding-top: 3rem;
+  }
+    
+  .grid-box {
+    background-color: #1E212B;
+    position: relative;
+    display: grid;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    
+    grid-template-columns: auto 2.8fr 2fr;
+    grid-auto-rows: auto 1fr 1fr;
+    width: 80vw;
+    margin:0 auto 0 auto;
+  }
+
+  .pic-address { /* 1920px */
+    position: relative;
+    width: 25vw;
+    height: auto;
+    grid-row: span 3;
+  }
+  
+  .text-box {
+    color: #FFFDED;
+    text-align: left;
+    
+    padding: 1.4rem 1.4rem 0 1.4rem;
+  }
+  .text-box ul{
+    text-decoration: none;
+    list-style-type: none;
+
+    font-size: 25px;
+    letter-spacing: 0.9rem;
+  }
+  .text-box ul li{
+    letter-spacing: normal;
+    font-size: 14.5px;
+    padding-left: 1.65rem;
+    
+  }
+  .text-item2 ,.text-item3 {
+    grid-column: span 2;
+  } 
+
+  .map-box {
+    margin: 1.4rem 1.4rem;
+    justify-self: flex-end;
+    width: stretch;
+    height: stretch;
+  }
+    
+@media(max-width: 1440px) {
+  .text-item2 ,.text-item3 {
+    grid-column: span 1;
+  } 
+  .pic-address { /* 1920px */
+    grid-row: span 2;
+  }
+  .grid-box {
+    grid-auto-rows: auto 1f;
+  }
+  .map-box {
+    width: 13.5vw;
+  }
+}
+
+@media(max-width: 1024px) {
+  .pink-box2 {
+    font-size: 2vw;
+  }
+  .grid-box {
+    width: 90vw;
+    grid-auto-rows: auto 1f 1f;
+  }
+  .pic-address { /* 1920px */
+    width: 35vw;
+    grid-row: span 3;
+  }
+  .text-item1 {
+    grid-column: span 2;
+  }
+  .text-item2 ,.text-item3 {
+    grid-column: span 2;
+  } 
+  .map-box {
+    display: none;
+  }
+}
+
+@media(max-width: 768px) {
+  .grid-box {
+    width: 90vw;
+    grid-template-columns: auto auto;
+    grid-auto-rows: auto 1f;
+  }
+  .pic-address { /* 1920px */
+    width: 35vw;
+    grid-row: span 1;
+  }
+  .text-box {
+    padding: 1rem 1rem 1rem 1rem;
+  }
+  .text-item1 {
+    grid-column: span 1;
+  }
+  .text-item2 ,.text-item3 {
+    grid-column: span 1;
+/*     margin-bottom: 1.4rem; */
+  } 
+}
+    
+@media(max-width: 606px) {
+  .pink-box {
+    width: 42vw;
+    font-size: 2.5vw;
+  }
+  .grid-box {
+    width: 80vw;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto;
+    grid-auto-rows: 1f;
+  }
+  .pic-address { /* 1920px */
+    width: 80vw;
+  }
+  .text-box {
+    padding: 1rem 1rem 1rem 1rem;
+  }
+}
+  </style>
+	<title>Unibake</title>
+
+  <script defer src="script/function.js"></script>
+</head>
+
+<body>
+  <div id="container">
+    <nav>   
+      <div class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+      <div class="logo">
+            <a onclick="goHomePage()"><h1>UNIBAKE</h1></a>
+        </div>
+
+      <div class="search">
+        <div class="search-box">
+            <input class="search-txt" type="text" name="" placeholder="Type to search">
+            <a class = "search-btn"   href="#"><i class="fas fa-search"></i></a>
+        </div>
+      </div>
+      
+      <ul class="nav-option">
+          <li class="profile-text">
+          <a onclick="goProfilePage()" class="nav-link">MY&nbsp;ACCOUNT</a></li>
+        <li class="cart-text">
+          <a onclick="goCartPage()" class="nav-link" >MY&nbsp;ORDER</a></li>
+        <li class="space-text">
+          </li>
+          <li><a onclick="goMenuPage()" class="nav-link" >MENU</a></li>
+          <li><a onclick="goUniHousePage()" class="nav-link" >UNIHOUSE</a></li>
+          <li><a onclick="goAboutPage()" class="nav-link" >ABOUT</a></li>
+        </ul>
+      
+      <div class="cart-icon"">
+            <a onclick="goCartPage()"   ><i class="fas fa-shopping-cart"></i></a>
+        </div>
+      <div class="profile-icon">
+            <a onclick="goProfilePage()"  ><i class="fas fa-user"></i></a>
+        </div>
+      <button onclick="gojoinUsPage()" class="joinUs">Join&nbsp;us
+      </button>
+    </nav>
+    
+    <div id="main"> 
+        <div class="pink-box pink-box1">
+          </div>
+        <div class="grid-box">
+          
+          <img class="pic-address" src="img/picAddress.jpg" alt="pic-address">
+<!--           <div class = "inform-box"> -->
+            <div class="text-box text-item1">
+              <ul>Address
+                <li><br>ที่อยู่หน้าบ้านตรงข้ามปากซอย</li>
+                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi eos, itaque ullam praesentium iste natus omnis ipsum aut blanditiis eius, facilis suscipit nam odit quod pariatur, libero dolore molestias excepturi nobis nulla! Pariatur, asperiores delectus!</li>
+              </ul>
+              
+            </div>
+<!--           <div class="map-box"> -->
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.184133389617!2d-73.9877312842809!3d40.75797467932692!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes%20Square!5e0!3m2!1sen!2sth!4v1656224028375!5m2!1sen!2sth" width="auto" height="auto" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="map-box"></iframe>
+<!--             </div> -->
+            <div class="text-box text-item2">
+              <ul>Contacts
+                <li><br>085-111-1111 (คุณเอ)</li>
+                <li>095-111-1111 (คุณบี)</li>
+                <li>065-111-1111 (คุณซี)</li>
+              </ul>
+            </div>
+            <div class="text-box text-item3">
+              <ul>Email
+                <li><br>Unibake@coorperation</li>
+              </ul>
+            </div>
+<!--           </div> -->
+                
+        </div> <!-- grid-box -->
+        <div class="pink-box pink-box2"> 
+          <h1>UNI<br>HOUS<br>E</h1>
+        </div> <!-- pink-box 1-->
+    </div> <!-- main -->
+  </div>
+
+</body>
+<footer>
+    <p>&copy;2022-Unibake. All rights reserved</p>
+</footer>
+</html>

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="img/ico/cake2.ico">
+	<link rel="stylesheet" href="css/style.css">
+	<link href="https://fonts.googleapis.com/css2?family=Galada&family=Josefin+Sans:wght@100;200;300;400;500;600;700&family=Noto+Sans+Thai:wght@100;200;300;400;500;600;700;800;900&display=swap"
+	 rel="stylesheet">
+  
+	<script src="https://kit.fontawesome.com/10e5ca581a.js" crossorigin="anonymous"></script>
+  <script type="module" src="script/firebase.js"></script>
+  
+	<style>
+  :root {
+    --div-pink-box-width: 22vw;
+    --div-order-container-width: 75vw;
+    --div-order-container-height: 270px;
+    
+    --div-order-width: 30vw;
+    --div-vector-width: 15vw;
+    --div-img-width: calc(var(--div-order-container-width) / 3);
+  }
+    
+  .pink-box {
+    width: var(--div-pink-box-width);
+  }
+  .pink-box:first-child { margin-top: 30px; }
+  .pink-box:last-child { padding: 100px; }
+    
+  .menu-container {
+    position: relative;
+  	display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+      
+/*       border: solid 2px black; */
+      
+    height: auto;
+    width: auto;
+	}
+  .order-container {
+    position: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+      
+    border: solid 2px #E69597;
+    border-top-style: none;
+    width: var(--div-order-container-width);
+    height: var(--div-order-container-height);
+    }
+    
+  .order-container:hover {
+    transition: 0.5s;
+    border: solid 3px var(--div-color-side1);
+  }
+  .order-container:hover div{ transition: 1s; }
+  .order-container:hover .order-detail,.order-container:hover .order-img{ transform: scale(1.05); }
+  .order-container:hover img{ opacity: 0.95; }
+  .order-container:hover .vector{ background: var(--div-color-side1); }
+    
+  .order-detail{
+    position: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+    padding: 5vw;
+    height: inherit;
+    width: var(--div-order-width);
+  }
+  .order-detail ul{
+    text-decoration: none;
+    list-style-type: none;
+    font-weight: 400;
+  }
+  .order-detail li:nth-child(1) {
+    font-family: Galada;
+    
+    font-size: 48px;
+    line-height: 50px;
+  }
+  .order-detail li:nth-child(2) {
+    font-size: 18px;
+    line-height: 18px;
+    padding-bottom: 1.5rem;
+  }
+  .order-detail li:nth-child(3) {
+    font-family: Roboto;      
+    font-size: 16px;
+    line-height: 19px;
+  }
+
+  .vector-container {
+    position: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;  
+    height: inherit;
+    width: var(--div-vector-width);
+    overflow: hidden;
+  }
+  .vector {
+    position: absolute;
+    background: var(--div-color-font);
+    height: 100vw;
+    width: calc( var(--div-vector-width) / 30 );
+    max-width: 10;
+  }
+  .order-container:nth-child(even) .vector-container .vector{
+    transform: rotate(-25deg);
+  }
+  .order-container:nth-child(odd) .vector-container .vector{
+    transform: rotate(25deg);
+  }
+    
+  .order-img{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;   
+    height: inherit;
+    width: var(--div-order-width);
+  }
+  .order-img img{width: var(--div-img-width);}
+    
+	</style><!-- Main Style -->
+  <style>
+@media(max-width: 1440px) {
+  .pink-box {
+    width: calc( var(--div-pink-box-width) + 50px );
+  }
+  .order-container {
+    height: calc( var(--div-order-container-height) + 50px );
+  }
+  .order-img img{
+    width: calc( var(--div-img-width) + 50px);
+  }
+} 
+@media(max-width: 1024px) {
+  .pink-box {
+    width: calc( var(--div-pink-box-width) + 70px );
+  }
+  .order-container {
+    width: calc( var(--div-order-container-width) + 10vw );
+    height: calc( var(--div-order-container-height) + 70px );
+  }
+  .order-img img{
+    width: calc( var(--div-img-width) + 90px);
+  }
+  .order-detail{
+    padding: 4vw;
+    width: calc(var(--div-order-width) + 5vw);
+  }
+  .order-img {
+    width: calc(var(--div-order-width) + 5vw);
+  }
+  .order-container:nth-child(even) .vector-container .vector{
+    transform: rotate(-17deg);
+  }
+  .order-container:nth-child(odd) .vector-container .vector{
+    transform: rotate(17deg);
+  }
+   
+} 
+@media(max-width: 768px) {
+  .order-img{
+    left: -20px;
+  }
+  .order-container:nth-child(even) .vector-container .vector{
+    transform: rotate(-5deg);
+  }
+  .order-container:nth-child(odd) .vector-container .vector{
+    transform: rotate(5deg);
+  }
+}
+@media(max-width: 606px) {
+  .order-container {
+    flex-direction: column-reverse;
+    height: auto;
+  }
+  .vector-container {
+    display: none;
+  }
+  .order-detail, .order-img, .vector-container {
+    width: var(--div-order-container-width);
+  }
+  .order-detail {
+    padding: 5vw;
+  }
+  .order-detail li {
+    word-break: break-all;
+  }
+  .order-img {
+    left: 0;
+  }
+  .order-img img{
+    height: auto;
+    width: 80vw;
+  }
+}
+  </style> <!-- Responsive For Web -->
+	<title>Unibake</title>
+
+  <script defer src="script/function.js"></script>
+</head>
+
+<body>
+
+  <div id="container">
+  	<nav>   
+      <div class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+      <div class="logo">
+            <a onclick="goHomePage()"><h1>UNIBAKE</h1></a>
+        </div>
+
+      <div class="search">
+        <div class="search-box">
+            <input class="search-txt" type="text" name="" placeholder="Type to search">
+            <a class = "search-btn"   href="#"><i class="fas fa-search"></i></a>
+        </div>
+      </div>
+      
+      <ul class="nav-option">
+          <li class="profile-text">
+          <a onclick="goProfilePage()" class="nav-link">MY&nbsp;ACCOUNT</a></li>
+        <li class="cart-text">
+          <a onclick="goCartPage()" class="nav-link" >MY&nbsp;ORDER</a></li>
+        <li class="space-text">
+          </li>
+          <li><a onclick="goMenuPage()" class="nav-link" >MENU</a></li>
+          <li><a onclick="goUniHousePage()" class="nav-link" >UNIHOUSE</a></li>
+          <li><a onclick="goAboutPage()" class="nav-link" >ABOUT</a></li>
+        </ul>
+      
+      <div class="cart-icon"">
+            <a onclick="goCartPage()"   ><i class="fas fa-shopping-cart"></i></a>
+        </div>
+      <div class="profile-icon">
+            <a onclick="goProfilePage()"  ><i class="fas fa-user"></i></a>
+        </div>
+      <button onclick="gojoinUsPage()" class="joinUs">Join&nbsp;us
+      </button>
+    </nav>
+    
+    <div id="main">
+      
+      <div class="pink-box">
+        <h1>MEN<br>U</h1>
+      </div><!-- Pink-box -->
+      
+      <div class="menu-container">
+        
+        <div class="order-container" style="border-top-style: solid;" onclick="goMenuPage()">
+          <div class="order-detail">
+            <ul>
+              <li>BROWNIE</li>
+              <li>\brau · nee\</li>
+              <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis</li>
+            </ul>
+          </div>
+          <div class="vector-container">
+            <div class="vector"></div>
+          </div>
+          <div class="order-img">
+            <img class="img" src="img/illusBrownie.png" alt="Brownie">
+          </div>
+        </div>
+        <div class="order-container" onclick="goMenuPage()">
+          <div class="order-detail">
+            <ul>
+              <li>BROWNIE 2</li>
+              <li>\brau · nee\</li>
+              <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis</li>
+            </ul>
+          </div>
+          <div class="vector-container">
+            <div class="vector"></div>
+          </div>
+          <div class="order-img">
+            <img class="img" src="img/illusBrownie.png" alt="Brownie">
+          </div>
+        </div>
+        <div class="order-container" onclick="goMenuPage()">
+          <div class="order-detail">
+            <ul>
+              <li>BROWNIE 3</li>
+              <li>\brau · nee\</li>
+              <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis</li>
+            </ul>
+          </div>
+          <div class="vector-container">
+            <div class="vector"></div>
+          </div>
+          <div class="order-img">
+            <img class="img" src="img/illusBrownie.png" alt="Brownie">
+          </div>
+        </div>
+
+      </div><!-- Menu-container -->
+      
+      <div class="pink-box"></div><!-- Pink-box -->
+    </div><!-- Main -->
+  </div><!-- Container -->
+  
+  
+</body>
+
+<footer>
+  <p>&copy;2022-Unibake. All rights reserved</p>
+</footer>
+</html>

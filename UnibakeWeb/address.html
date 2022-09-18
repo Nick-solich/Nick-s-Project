@@ -1,0 +1,260 @@
+<!-- File Nav + Footer -->
+<!DOCTYPE html><!--comment-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/ico/cake2.ico">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Galada&family=Josefin+Sans:wght@100;200;300;400;500;600;700&family=Noto+Sans+Thai:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+    <script src="https://kit.fontawesome.com/10e5ca581a.js" crossorigin="anonymous"></script>
+    <script type="module" src="script/firebase.js"></script>
+    
+    <title>Unibake</title>
+    <style>
+      #main {
+        display: flex;
+      }
+
+      .pink-box {
+        position: relative;
+      margin: 0 0;
+      top: auto;
+      left: 18%;
+      bottom: 12%;
+      width: 22%;
+      height: 800px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+    }
+
+    .center-box {
+      position: absolute;
+      top: 130px;
+      left: 10%;
+/*       margin: 0 auto; */
+/*       border: solid 2px #1E212B; */
+      width: 80%;
+      height: 600px;
+      display: flex;
+        justify-content: space-between;
+    }
+
+      .grid-left {
+        display: grid;
+        width: 65%;
+        height: 80%;
+/*         border: green solid 2px;  */
+        grid-gap: 30px;
+        grid-template-columns: 50%;
+        grid-template-rows: repeat(5, 70px);
+        
+      }
+
+      .grid-item {
+        background-color: #1E212B;
+        border: #1E212B solid 2px; 
+        padding: 10px;
+        letter-spacing: 0.5em;
+      }
+
+      .grid-item-1, .grid-item-2  {
+        grid-column-start: 1;
+        grid-column-end: 3;
+/*         grid-area: header; */
+      }
+
+      .grid-item-4 {
+        grid-row-start: 4;
+        grid-column-start: 1;
+        
+      }
+      
+      .grid-item-5 {
+        grid-row-start: 4;
+        grid-column-start: 2;
+        
+      }
+
+      .grid-item-6 {
+        grid-row-start: 5;
+        grid-column-start: 1;
+        
+      }
+
+      .topic {
+        color: #FFFDED;
+        margin-bottom: 10px;
+      }
+
+      .real-data {
+        font-size: 20px;
+        color: #E69597;
+      }
+
+
+      .right {
+        width: 30%;
+        height: 100%;
+/*         border: green solid 2px;   */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        
+      }
+
+      .map-box {
+        width: 100%;
+        height: 300px;
+      }
+
+      .box-btn {
+/*         border: green solid 2px;  */
+        width: 100%;
+        height: 160px;
+        z-index: 11;
+        
+      }
+
+      .btn {
+        width: 100%;
+        height: 65px;
+        font-family: 'Galada', cursive;
+        letter-spacing: 0.6em;
+        font-size: 25px;
+        border: #1E212B solid 2px; 
+        cursor: pointer;
+        transition: 0.5s;
+/*         position: relative;
+        overflow: hidden; */
+      }
+
+      .save {
+        background-color: #1E212B;
+        color: #FFFDED;
+        margin-bottom: 10px;
+      }
+
+      .back {
+        background-color: #FFFDED;
+        color: #1E212B;
+      }
+
+      .save:hover {
+        background-color: #FFFDED;
+        color: #1E212B;
+      }
+
+      .back:hover {
+        background-color: #1E212B;
+        color: #FFFDED;
+      }
+
+    </style>
+
+    <script defer src="script/function.js"></script>
+</head>
+  
+<body>
+  <div id="container">
+    <nav>   
+      <div class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+      <div class="logo">
+            <a onclick="goHomePage()"><h1>UNIBAKE</h1></a>
+        </div>
+
+      <div class="search">
+        <div class="search-box">
+            <input class="search-txt" type="text" name="" placeholder="Type to search">
+            <a class = "search-btn"   href="#"><i class="fas fa-search"></i></a>
+        </div>
+      </div>
+      
+      <ul class="nav-option">
+          <li class="profile-text">
+          <a onclick="goProfilePage()" class="nav-link">MY&nbsp;ACCOUNT</a></li>
+        <li class="cart-text">
+          <a onclick="goCartPage()" class="nav-link" >MY&nbsp;ORDER</a></li>
+        <li class="space-text">
+          </li>
+          <li><a onclick="goMenuPage()" class="nav-link" >MENU</a></li>
+          <li><a onclick="goUniHousePage()" class="nav-link" >UNIHOUSE</a></li>
+          <li><a onclick="goAboutPage()" class="nav-link" >ABOUT</a></li>
+        </ul>
+      
+      <div class="cart-icon"">
+            <a onclick="goCartPage()"   ><i class="fas fa-shopping-cart"></i></a>
+        </div>
+      <div class="profile-icon">
+            <a onclick="goProfilePage()"  ><i class="fas fa-user"></i></a>
+        </div>
+      <button onclick="gojoinUsPage()" class="joinUs">Join&nbsp;us
+      </button>
+    </nav>
+    <div id="main">
+      <div class = "pink-box">
+        <h1>ADDR<br>ESS</h1>
+      </div>
+      <div class = "center-box">
+        <div class = "grid-left">
+          <div class = "grid-item grid-item-1">
+            <p class = "topic">Name</p>
+            <p class = "real-data">Sitthipon Sinthuwongpusa</p>
+          </div>
+          <div class = "grid-item grid-item-2">
+            <p class = "topic">Address</p>
+            <p class = "real-data">211B, Baker St, Marylebone, London</p>
+          </div>
+          <div class = "grid-item grid-item-3">
+            <p class = "topic">District</p>
+            <p class = "real-data">Ladprao</p>
+          </div>
+          <div class = "grid-item grid-item-4">
+            <p class = "topic">Province</p>
+            <p class = "real-data">Bangkok</p>
+          </div>
+          <div class = "grid-item grid-item-5">
+            <p class = "topic">Postcode</p>
+            <p class = "real-data">NW1 6XE</p>
+          </div>
+          <div class = "grid-item grid-item-6">
+            <p class = "topic">Phone Number</p>
+            <p class = "real-data">0987654321</p>
+          </div>
+        </div>
+        <div class = "right">
+          <div class = "map-box">
+           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.184133389617!2d-73.9877312842809!3d40.75797467932692!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes%20Square!5e0!3m2!1sen!2sth!4v1656224028375!5m2!1sen!2sth" width="auto" height="auto" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="map-box"></iframe>
+            
+          </div>
+          <div class = "box-btn">
+            <button class = "btn save">
+              Save
+            </button>
+            <button class = "btn back">
+              Back
+            </button>
+          </div>
+        </div>
+      </div>
+    
+    </div>
+  </div>
+  
+</body>
+  
+<footer>
+  
+ <div class="footerTemplate">
+        <p>&copy;2022-Unibake. All rights reserved</p>
+ </div>
+  
+</footer>
+</html>

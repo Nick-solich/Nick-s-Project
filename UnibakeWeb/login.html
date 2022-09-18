@@ -1,0 +1,215 @@
+<!-- File Nav + Footer -->
+<!DOCTYPE html><!--comment-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="img/ico/cake2.ico">
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Galada&family=Josefin+Sans:wght@100;200;300;400;500;600;700&family=Noto+Sans+Thai:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel= "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" >
+  <script src="https://kit.fontawesome.com/10e5ca581a.js" crossorigin="anonymous"></script>
+  <script type="module" src="script/firebase.js"></script>
+  
+  <title>Unibake</title>
+  <style>
+  #main {
+    display: flex;
+    justify-content: space-between;
+  }
+  .pink-box {
+    position: relative;
+    align-self: flex-start;
+    background-color: #E69597;
+    margin: 0 auto 0 15vw;
+    padding: 1.5rem;
+    width: auto;
+    height: auto;
+  }
+     
+  .picLogin {
+    color: #FFFDED;
+    
+    width: 25vw;
+    margin-bottom: 4em;
+  }
+      
+  .box-Register {
+    position: relative;
+    align-self: center;
+    margin: 0 15vw 0 auto;
+    padding: 1.5vw;
+/*       padding: 2.5% 2% 2.5% 2%; */
+
+      
+    width: 35vw;
+/*       max-width: 400px; */
+    height: 420px;
+      
+/*       border: #1E212B solid 2px; */
+    }
+
+  #username {
+    margin-top: 50px;
+    background: none;
+    border: #1E212B solid 2px;
+    width: 100%;
+    height: 50px;
+    outline: none;
+    font-size: 25px;
+    padding: 0 15px;
+    font-family: 'Josefin Sans', sans-serif;
+  }
+
+  #password {
+    background: none;
+    border: #1E212B solid 2px;
+    width: 100%;
+    height: 50px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    outline: none;
+    font-size: 25px;
+    padding: 0 15px;
+    font-family: 'Josefin Sans', sans-serif;
+  }
+
+  .btn-register {
+    height: 45px;
+    width: 100%;
+    font-family: 'Galada', cursive;
+    background-color: #1E212B;
+    color: #E69597;
+    letter-spacing: 0.6em;
+    font-size: 25px;
+    margin-top: 80px;
+    margin-bottom: 15px;
+    cursor: pointer;      
+  }
+
+  #username::placeholder ,#password::placeholder{
+    font-family: 'Josefin Sans', sans-serif;
+    letter-spacing: 0.6em;
+    color: #1E212B;
+    font-size: 16px;
+    opacity: 70%;
+    margin: 0 0;
+  }
+      
+  .eye {
+    position: absolute;
+    right: 10%;
+    margin-top: 35px;
+/*       margin-right: 100px; */
+  }
+
+  #hide2 {
+    display: none;
+  }
+
+  .login-link {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: #E69597; 
+  
+    letter-spacing: 0.2em;
+  }
+      
+  .login-link a {
+    font-family: 'Galada', cursive;
+    cursor: pointer; 
+    text-decoration: underline;
+      
+    padding-left: 0.5rem;
+  }
+/*     .register-link p {
+      
+    } */
+  </style>
+  
+  <script defer src="script/function.js"></script>
+</head>
+  
+<body>
+
+  <div id="container">
+   <nav>   
+      <div class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+      <div class="logo">
+            <a onclick="goHomePage()"><h1>UNIBAKE</h1></a>
+        </div>
+
+      <div class="search">
+        <div class="search-box">
+            <input class="search-txt" type="text" name="" placeholder="Type to search">
+            <a class = "search-btn"   href="#"><i class="fas fa-search"></i></a>
+        </div>
+      </div>
+      
+      <ul class="nav-option">
+          <li class="profile-text">
+          <a onclick="goProfilePage()" class="nav-link">MY&nbsp;ACCOUNT</a></li>
+        <li class="cart-text">
+          <a onclick="goCartPage()" class="nav-link" >MY&nbsp;ORDER</a></li>
+        <li class="space-text">
+          </li>
+          <li><a onclick="goMenuPage()" class="nav-link" >MENU</a></li>
+          <li><a onclick="goUniHousePage()" class="nav-link" >UNIHOUSE</a></li>
+          <li><a onclick="goAboutPage()" class="nav-link" >ABOUT</a></li>
+        </ul>
+      
+      <div class="cart-icon"">
+            <a onclick="goCartPage()"   ><i class="fas fa-shopping-cart"></i></a>
+        </div>
+      <div class="profile-icon">
+            <a onclick="goProfilePage()"  ><i class="fas fa-user"></i></a>
+        </div>
+      <button onclick="gojoinUsPage()" class="joinUs">Join&nbsp;us
+      </button>
+    </nav>
+  
+    <div id="main">
+      <!--   For Main Content -->
+      <div class="pink-box">
+        <img class="picLogin" src="img/picLogin.jpg" alt="picLogin" >
+        <h1>LOG<br>IN</h1>
+      </div>
+    
+      <div class="box-Register">
+        <input type="text" id="username" placeholder = "Username/Email">
+        <br>
+        <input type="password" id="password" placeholder = "Password">
+        <span class = "eye" onclick = "togglePasswordVisibility()" style="cursor: pointer;">
+          <i id = "hide1" class="fa-solid fa-eye-slash"></i>
+          <i id = "hide2" class="fa-solid fa-eye"></i>  
+        </span>
+        <p style = "letter-spacing: 0.2em;">
+          Forget password?
+        </p>
+        <button class = "btn-register">
+        Log&nbsp;in
+        </button>
+        <div class="login-link">
+          <p>Haven’t an Account?</p>
+          <a onclick="goRegisterPage()">Register</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+  
+<footer>
+  
+ <div class="footerTemplate">
+        <p>&copy;2022-Unibake. All rights reserved</p>
+ </div>
+  
+</footer>
+</html>
