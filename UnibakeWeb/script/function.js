@@ -1,41 +1,41 @@
 // Link to Another HTML
 function goHomePage() {
   console.log("Relocation to Home");
-  location.href = "../home.html";
+  location.href = "home.html";
 }
 function goMenuPage() {
   console.log("Relocation to Menu");
-  location.href = "../menu.html";
+  location.href = "menu.html";
 }
 function goUniHousePage() {
   console.log("Relocation to UniHouse");
-  location.href = "../uniHouse.html";
+  location.href = "uniHouse.html";
 }
 function goAboutPage() {
   console.log("Relocation to About");
-  location.href = "../about.html";
+  location.href = "about.html";
 }
 
 function goCartPage() {
   console.log("Relocation to Cart");
-  location.href = "../cart.html";
+  location.href = "cart.html";
 }
 function goProfilePage() {
   console.log("Relocation to Profile");
-  location.href = "../profile.html";
+  location.href = "profile.html";
 }
 function gojoinUsPage() {
   console.log("Relocation to Login");
-  location.href = "../login.html";
+  location.href = "login.html";
 }
 function goRegisterPage() {
   console.log("Relocation to Register");
-  location.href = "../register.html";
+  location.href = "register.html";
 }
 
 function goLoginPage() {
   console.log("Relocation to Login");
-  location.href = "../login.html";
+  location.href = "login.html";
 }
 
 // Hamburger menu active
