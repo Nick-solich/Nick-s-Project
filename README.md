@@ -1,2 +1,3 @@
 # Nick-s-Project
-The Prototype of Project that I used to do
+The Prototype of E-commerce Web-App Project\
+Project Size 3 members : Walkthough to all role in project
